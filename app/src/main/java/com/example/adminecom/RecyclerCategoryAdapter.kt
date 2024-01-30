@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.adminecom.databinding.CategoryRowBinding
 
 class RecyclerCategoryAdapter(val context: Context, val arrCatList:ArrayList<CategoryModal>) : RecyclerView.Adapter<RecyclerCategoryAdapter.ViewHolder>() {
@@ -22,8 +23,7 @@ class RecyclerCategoryAdapter(val context: Context, val arrCatList:ArrayList<Cat
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-
-        holder.binding.catImg.setImageResource(arrCatList[position].imgPath)
+        Glide.with(context).load(arrCatList[position].catImg).into(holder.binding.catImg)
         holder.binding.catName.text =arrCatList[position].catName
     }
 }

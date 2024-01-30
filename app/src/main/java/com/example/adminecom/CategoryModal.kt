@@ -1,8 +1,7 @@
 package com.example.adminecom
 
 data class CategoryModal(
-        val imgPath :Int,
-        val catName : String
-
-
+        var createdAt: Long = 0,
+        var catName: String? = "",
+        var catImg: String? = "",
 )

@@ -42,97 +42,18 @@ class AddProductFragment : Fragment() {
         binding.ProductCategoryDropDown.setAdapter(pCategoryadapter)
 
 
-        //for Product Type
-        val pTypeDropDownItems = arrayOf("salt & suger", "Noodles", "Cooking oil", "Eggs", "Chips & Crisps")
-        val pTypeadapter = ArrayAdapter(requireContext(), android.R.layout.simple_expandable_list_item_1, pTypeDropDownItems)
-        binding.ProductTypeDropDown.setAdapter(pTypeadapter)
+        //for Product Sub Cat
+        val pSubCatDropDownItems = arrayOf("salt & suger", "Noodles", "Cooking oil", "Eggs", "Chips & Crisps")
+        val subCateadapter = ArrayAdapter(requireContext(), android.R.layout.simple_expandable_list_item_1, pSubCatDropDownItems)
+        binding.ProductTypeDropDown.setAdapter(subCateadapter)
 
 
+        // for units dropdown
+        val productColor = arrayOf("Red", "Green", "Yellow", "Pink", "Black")
+        val Coloradapter = ArrayAdapter(requireContext(), android.R.layout.simple_expandable_list_item_1, productColor)
+        binding.productColor.setAdapter(Coloradapter)
 
 
-
-        val iCam = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        val iGall = Intent(Intent.ACTION_GET_CONTENT)
-        iGall.type = "image/*"
-
-        val camLauncher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                if (it.resultCode == RESULT_OK) {
-                    val imgBitmap = it.data!!.extras!!.get("data") as Bitmap
-                    binding.imageView.setImageBitmap(imgBitmap)
-
-                    val baos = ByteArrayOutputStream()
-
-                    imgBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
-                    val imgBytes = baos.toByteArray()
-
-//                    val storageRef = Firebase.storage
-//                    val timeStamp = Calendar.getInstance().timeInMillis
-//                    val imgRef =
-//                        storageRef.reference.child("app_images/profile_pic/IMG_$timeStamp.png")
-//
-//                    imgRef.putBytes(imgBytes)
-//                        .addOnSuccessListener {
-//                            Log.d("Success", "${it.metadata}")
-//
-//                            //image downloaded det url start----------
-//                            imgRef.downloadUrl.addOnSuccessListener {
-//                                Log.d("ImgUrl", "$it")
-//
-//                                profilepic = "$it"
-//                            }.addOnFailureListener {
-//
-//                            }
-//
-//
-//                        }.addOnFailureListener {
-//                            Log.d("Failure", "${it.message}")
-//                            it.printStackTrace()
-//                        }
-
-                }
-            }
-
-
-//        val galLauncher =
-//            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-//                if (it.resultCode == RESULT_OK) {
-//                    val imgBitmap = MediaStore.Images.Media.getBitmap(
-//                        applicationContext.contentResolver,
-//                        it.data!!.data
-//                    )
-//                    binding.btnproductsimg.setImageBitmap(imgBitmap)
-//
-//                    val baos = ByteArrayOutputStream()
-//
-//                    imgBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
-//                    val imgBytes = baos.toByteArray()
-//
-//                    //val storageRef = Firebase.storage
-////                    val timeStamp = Calendar.getInstance().timeInMillis
-////                    val imgRef =
-////                        storageRef.reference.child("app_images/profile_pic/IMG_$timeStamp.png")
-////
-////                    imgRef.putBytes(imgBytes)
-////                        .addOnSuccessListener {
-////                            Log.d("Success", "${it.metadata}")
-////
-////                            //image downloaded det url start----------
-////                            imgRef.downloadUrl.addOnSuccessListener {
-////                                Log.d("ImgUrl", "$it")
-////
-////                                profilepic = "$it"
-////
-////                            }.addOnFailureListener {
-////
-////                            }
-////                        }.addOnFailureListener {
-////                            Log.d("Failure", "${it.message}")
-////                            it.printStackTrace()
-////                        }
-//
-//                }
-//            }
 
         binding.btnproductsimg.setOnClickListener {
             val dialogAdd= Dialog(requireContext() )
@@ -140,7 +61,7 @@ class AddProductFragment : Fragment() {
             dialogAdd.setContentView(dialogBinding.root)
 
             dialogBinding.camraUpload.setOnClickListener {
-                camLauncher.launch(iCam)
+               // camLauncher.launch(iCam)
                 dialogAdd.dismiss()
             }
 

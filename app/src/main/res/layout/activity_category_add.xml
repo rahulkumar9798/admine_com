@@ -32,7 +32,7 @@
         android:layout_height="wrap_content">
         <EditText
             android:maxLines="1"
-            android:id="@+id/catName"
+            android:id="@+id/edtCatName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Category Name"
